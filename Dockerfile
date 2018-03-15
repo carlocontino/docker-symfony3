@@ -15,8 +15,9 @@ ENV LANG it_IT.UTF-8
 ENV LANGUAGE it_IT:it
 ENV LC_ALL it_IT.UTF-8
 
-RUN apt-get install -y build-essential libssl-dev nodejs-legacy yarn
-
+RUN apt-get install -y build-essential libssl-dev
+RUN wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash && export NVM_DIR="$HOME/.nvm" && \. "$NVM_DIR/nvm.sh"
+RUN nvm install node
 RUN a2enmod rewrite
 
 EXPOSE 8000
